@@ -1,0 +1,15 @@
+.main {
+  display: grid;
+  /*grid-template-areas: 'ene feb mar abr'
+                       'may jun jul ago'
+                       'sep oct nov dic' */
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: repeat(3, 1fr);
+}
+
+div {
+  background: gray;
+  height: 100%;
+  width: 100%;
+  border: thin solid black;
+}

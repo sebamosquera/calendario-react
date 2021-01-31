@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-areas: 'head head'
+                       'nav  main';
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 10fr;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.header {
+  grid-area: head;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.main {
+  grid-area: main;
+}
