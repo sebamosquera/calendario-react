@@ -1,13 +1,18 @@
+import React from 'react';
 import Main from './Main/Main';
 import Nav from './Nav/Nav';
 import './App.css';
+import { DataProvider } from './Context/DataContext';
 
 function App() {
+
   return (
     <div className="container">
-      <Nav />
-      <header className="header">AÑO</header>
-      <Main />
+      <DataProvider>
+        <Nav/>
+        <header className="header">2020</header>
+        <Main/>
+      </DataProvider>
     </div>
   );
 }

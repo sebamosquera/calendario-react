@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './main.css';
+import { DataContext } from '../Context/DataContext';
 
 const Main = () => {
 
-  const meses = ['ENERO', 'FEBRERO', 'MARZO',
-   'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO',
-   'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+  const { displayMonth } = useContext(DataContext)
 
-   const listMeses = meses.map((mes, index) =>
+  const listMeses = displayMonth.map((mes, index) =>
     <div key={index}>{mes}</div>
    );
 
-   listMeses.map(div => console.log(div.props.children));
+//  listMeses.map(div => console.log(div.props.children));
 
   return (
     <main  className="main">

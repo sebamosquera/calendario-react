@@ -4,7 +4,7 @@
                        'may jun jul ago'
                        'sep oct nov dic' */
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 div {

@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './nav.css';
+import { DataContext } from '../Context/DataContext';
 
 const Nav = () => {
 
-  const meses = ['ENERO', 'FEBRERO', 'MARZO',
-   'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO',
-   'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+  const { meses, setDisplayMonths } = useContext(DataContext);
 
-   const listMeses = meses.map((mes, index) =>
-    <li key={index}>{mes}</li>
-   );
+  const listMeses = meses.map((mes, index) =>
+  <li
+    onClick={() => {
+      setDisplayMonths([mes]);
+    }}
+    key={index} >{mes}</li>
+  );
 
   return (
-    <nav className='nav'>
-      <ul>
-        {listMeses}
-      </ul>
-    </nav>
-  )
+  <nav className='nav'>
+    <ul>
+      {listMeses}
+    </ul>
+  </nav>
+)
 }
 
 export default Nav;
