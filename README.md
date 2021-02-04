@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+PROYECTO EN PROCESO...
+
 Proyecto personal de total autoría mía, donde estoy volcando conocimientos de REACT, HTML y CSS, con enfoque en la flexibilidad y la reutilización de código.
 
 
