@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="container">
       <DataProvider>
-        <Nav/>
-        <header className="header">2020</header>
-        <Main/>
+        <Nav />
+        <header className="app-header">2020</header>
+        <Main />
       </DataProvider>
     </div>
   );

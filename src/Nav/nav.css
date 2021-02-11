@@ -1,8 +1,8 @@
-.nav {
+.app-nav {
   background: #dee0e3;
 }
 
-ul {
+.nav-ul {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -11,13 +11,13 @@ ul {
   background: #666d7a;
 }
 
-li {
+.nav-li {
   list-style-type: none;
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-li:hover {
+.nav-li:hover {
   transform: scale(1.25);
   cursor: pointer;
 }

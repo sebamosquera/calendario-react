@@ -1,15 +1,27 @@
-.main {
+.app-main {
+  background: gray;
+}
+
+.months-container {
   display: grid;
   /*grid-template-areas: 'ene feb mar abr'
                        'may jun jul ago'
                        'sep oct nov dic' */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  height: 100%;
+  width: 100%;
 }
 
-div {
+.month {
   background: gray;
   height: 100%;
   width: 100%;
   border: thin solid black;
+}
+
+.button {
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
