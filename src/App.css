@@ -1,4 +1,4 @@
-.container {
+.app-container {
   display: grid;
   grid-template-areas: 'head head'
                        'nav  main';

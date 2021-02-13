@@ -23,3 +23,23 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
+
+.month-day {
+  border: thin solid black;
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+  padding: 10px;
+}
+
+.month-day:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+.month-days-container {
+  margin: 5px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: repeat(auto, 1fr);
+}

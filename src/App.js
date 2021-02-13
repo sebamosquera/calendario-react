@@ -7,7 +7,7 @@ import { DataProvider } from './Context/DataContext';
 function App() {
 
   return (
-    <div className="container">
+    <div className="app-container">
       <DataProvider>
         <Nav />
         <header className="app-header">2020</header>

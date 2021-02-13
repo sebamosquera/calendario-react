@@ -4,9 +4,9 @@ import { DataContext } from '../Context/DataContext';
 
 const Month = () => {
 
-  const { days, meses, selectedMonth, setSelectedMonth, changeMonth } = useContext(DataContext);
+  const { dayNumbers, dayNames, meses, selectedMonth, setSelectedMonth, changeMonth } = useContext(DataContext);
 
-  const listOfDays = days.map((day, index) =>
+  const listOfDays = dayNames.map((day, index) =>
     <li
       className='month-li'
       key={index}
@@ -15,17 +15,28 @@ const Month = () => {
     </li>
     );
 
+  const listOfWeeks = dayNumbers.map((dia, index) =>
+    <div
+      className='month-day'
+      key={index}
+      value={dia}
+      onClick={(e) => console.log(e.target.attributes.value.value, selectedMonth)}>
+      {dia}
+    </div>
+   );
+
   return (
-    <div>
+    <div className='month-container'>
       <nav className='month-nav'>
-        <button onClick={() => changeMonth(-1)}>Prev</button>
-        <button onClick={() => changeMonth(1)}>Next</button>
+        <button onClick={() => changeMonth(-1)}>{'<'}</button>
         <h1>{selectedMonth}</h1>
+        <button onClick={() => changeMonth(1)}>{'>'}</button>
       </nav>
-      <main className='month-na'>
+      <main className='month-main'>
         <ul className='month-ul'>
           {listOfDays}
         </ul>
+        <div className='month-days-container'>{listOfWeeks}</div>
       </main>
     </div>
   );
