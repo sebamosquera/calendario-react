@@ -1,22 +1,46 @@
 import React, { useState, createContext } from 'react';
 
+const dayNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+
+const dayNames = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES',
+ 'VIERNES', 'SABADO']
+
+const meses = ['ENERO', 'FEBRERO', 'MARZO',
+ 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO',
+ 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+
 const DataContext = createContext({});
 
 const DataProvider = ({children}) => {
 
-  const dayNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+  const dt = new Date();
 
-  const dayNames = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES',
-   'VIERNES', 'SABADO', 'DOMINGO']
+  const day = dt.getDay(); // indice de dia semanal
+  const currentDay = dt.getDate(); // numero del mes
+  const month = dt.getMonth();
+  const year = dt.getFullYear();
 
-  const meses = ['ENERO', 'FEBRERO', 'MARZO',
-   'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO',
-   'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+  const firstDayOfMonth = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  const [ selectedMonth, setSelectedMonth ] = useState(meses[0]);
+  const dateString = firstDayOfMonth.toLocaleDateString('es-ar', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+  });
+
+  const paddingDays = dayNames.indexOf(dateString.split(', ')[0].toUpperCase());
+
+  console.log(daysInMonth, month);
+  // console.log(day, month, year);
+
+  const [ selectedMonth, setSelectedMonth ] = useState(meses[month]);
   // selectedMonth se inicia con todos los meses
-  const [ selectedDay, setSelectedDay ] = useState(1);
+  const [ selectedDay, setSelectedDay ] = useState(currentDay);
   // selectedDay se inicia con el dia actual
+
+  const [ display, setDisplay ] = useState('mes');
 
   const changeMonth = (number) => {
     let currentMonth = meses.indexOf(selectedMonth);
@@ -41,7 +65,14 @@ const DataProvider = ({children}) => {
       meses,
       selectedMonth,
       setSelectedMonth,
-      changeMonth
+      setSelectedDay,
+      selectedDay,
+      changeMonth,
+      display,
+      setDisplay,
+      paddingDays,
+      daysInMonth,
+      currentDay
     }}>
       {children}
     </DataContext.Provider>
