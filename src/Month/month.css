@@ -45,6 +45,11 @@
   grid-auto-rows: repeat(auto, 1fr);
 }
 
+.padding {
+  border: 0 solid black;
+  background: #889492;
+}
+
 #currentDay {
   background-color: #cce3e0;
 }

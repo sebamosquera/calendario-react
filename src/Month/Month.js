@@ -5,7 +5,7 @@ import Day from '../Day/Day';
 
 const Month = () => {
 
-  const { setSelectedDay, setDisplay, dayNumbers, dayNames, meses, selectedMonth, setSelectedMonth, changeMonth, paddingDays, daysInMonth, currentDay} = useContext(DataContext);
+  const { setSelectedDate, setDisplay, dayNumbers, dayNames, meses, selectedMonth, setSelectedMonth, changeMonth, paddingDays, daysInMonth, currentDay, lastDayOfPrevMonth} = useContext(DataContext);
 
   const listOfDayNames = dayNames.map((day, index) =>
     <li
@@ -16,35 +16,30 @@ const Month = () => {
     </li>
     );
 
-  const listOfDayNumbers = dayNumbers.map((day, i) => {
-    i += 1;
-    let dia = i - paddingDays;
-    return i > paddingDays ?
-      <div
-          className='month-day'
-          id={dia === currentDay? 'currentDay' : null}
-          key={i}
-          value={dia}
-          onClick={() => {setSelectedDay(dia); setDisplay('dia')}}>
-          <Day value={dia} miniatura={true} />
-      </div> :
+  const listOfDayNumbers = dayNumbers.map((num, index) => {
+    let dia = index - paddingDays + 1;
+    return paddingDays > index ?
       <div
         className='month-day padding'
-        key={i}
-        value={dia}
-        onClick={() => {setSelectedDay(dia); setDisplay('dia')}}>
+        key={index}
+        onClick={() => {setSelectedDate(lastDayOfPrevMonth  + dia); setDisplay('dia')}}
+        >
+        <Day value={lastDayOfPrevMonth + dia} miniatura={true} />
+      </div> :
+      <div
+        className='month-day'
+        key={index}
+        onClick={() => {setSelectedDate(dia); setDisplay('dia')}}>
         <Day value={dia} miniatura={true} />
-      </div>;
+      </div>
   })
-
-  console.log(listOfDayNumbers);
 
   return (
     <div className='month-container'>
       <nav className='month-nav'>
         <h1>HOME</h1>
         <button onClick={() => changeMonth(-1)}>{'<'}</button>
-        <h1>{selectedMonth}</h1>
+        <h1>{meses[selectedMonth]}</h1>
         <button onClick={() => changeMonth(1)}>{'>'}</button>
       </nav>
       <main className='month-main'>

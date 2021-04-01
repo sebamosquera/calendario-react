@@ -12,7 +12,7 @@ const Nav = () => {
     <li
       className='nav-li'
       onClick={() => {
-        setSelectedMonth(mes);
+        setSelectedMonth(index);
         setDisplay('mes')
       }}
       key={index}
@@ -21,7 +21,6 @@ const Nav = () => {
     </li>
     );
   // lista de meses que siempre lleva todos los meses, onclick actualiza el selectedMonths
-
 
   return (
   <nav className='app-nav'>
