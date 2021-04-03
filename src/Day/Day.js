@@ -1,4 +1,4 @@
-// import './day.css';
+import './day.css';
 import React, { useContext, useState} from 'react';
 import { DataContext } from '../Context/DataContext';
 
@@ -9,7 +9,10 @@ const Day = (props) => {
   return (
     <div className='day-div'>
       {props.miniatura === true ?
-        <div><h1>{props.day}</h1><div>TAREAS</div></div> :
+        <div>
+          <h1 className='day-number'>{props.day}</h1>
+          <div>TAREAS</div>
+        </div> :
         <div>FECHA: {selectedDate}</div>
       }
     </div>

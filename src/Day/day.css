@@ -1,0 +1,10 @@
+.day-div:hover > div > h1{
+  animation: x-axis 0.5s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes x-axis {
+  100% {
+    transform: translateY(-40px) scale(0.6);
+  }
+}
