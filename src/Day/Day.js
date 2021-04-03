@@ -4,16 +4,13 @@ import { DataContext } from '../Context/DataContext';
 
 const Day = (props) => {
 
-  const { selectedDay, dayNames } = useContext(DataContext)
-
-  var hora = new Date();
-
+  const { selectedDate, dayNames } = useContext(DataContext)
 
   return (
     <div className='day-div'>
       {props.miniatura === true ?
-        <div><h1>{props.value}</h1><div>TAREAS</div></div> :
-        <div>FECHA: {dayNames[hora.getDay()] + ' ' + hora.getDate()}</div>
+        <div><h1>{props.day}</h1><div>TAREAS</div></div> :
+        <div>FECHA: {selectedDate}</div>
       }
     </div>
   )

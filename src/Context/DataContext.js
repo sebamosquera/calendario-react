@@ -34,14 +34,16 @@ const DataProvider = ({children}) => {
   const lastDayOfPrevMonth = new Date(selectedYear, selectedMonth, 0).getDate();
 
   const dayNumbers = [];
-  for (let i = 0; i <= paddingDays + daysInMonth; i++) {
+  for (let i = 0, index = 0; i < paddingDays + daysInMonth; i++, index++) {
     let day = i - paddingDays + 1;
+    if (index == 7) index = 0;
     if (paddingDays > i) {
       if (selectedMonth === 0) {
         dayNumbers.push({
           year: selectedYear - 1,
           month: selectedMonth + 11,
           day: lastDayOfPrevMonth + day,
+          dayName: dayNames[index],
           padding: true
         })
       } else {
@@ -49,6 +51,7 @@ const DataProvider = ({children}) => {
           year: selectedYear,
           month: selectedMonth - 1,
           day: lastDayOfPrevMonth + day,
+          dayName: dayNames[index],
           padding: true
         })
       }
@@ -57,10 +60,13 @@ const DataProvider = ({children}) => {
         year: selectedYear,
         month: selectedMonth,
         day: day,
+        dayName: dayNames[index],
         padding: false
       })
     }
   }
+
+  console.log(dayNumbers);
 
   const changeMonth = (number) => {
     switch (selectedMonth) {
