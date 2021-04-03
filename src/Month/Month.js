@@ -16,22 +16,16 @@ const Month = () => {
     </li>
     );
 
-  const listOfDayNumbers = dayNumbers.map((num, index) => {
-    let dia = index - paddingDays + 1;
-    return paddingDays > index ?
+  const listOfDayNumbers = dayNumbers.map((date, index) => {
+    return (
       <div
-        className='month-day padding'
+        className={date.padding? 'month-day padding' : 'month-day'}
         key={index}
-        onClick={() => {setSelectedDate(lastDayOfPrevMonth  + dia); setDisplay('dia')}}
+        onClick={() => {setSelectedDate(date.day); setDisplay('dia')}}
         >
-        <Day value={lastDayOfPrevMonth + dia} miniatura={true} />
-      </div> :
-      <div
-        className='month-day'
-        key={index}
-        onClick={() => {setSelectedDate(dia); setDisplay('dia')}}>
-        <Day value={dia} miniatura={true} />
+        <Day value={date.day} miniatura={true} />
       </div>
+    )
   })
 
   return (

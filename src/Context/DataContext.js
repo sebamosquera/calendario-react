@@ -29,9 +29,38 @@ const DataProvider = ({children}) => {
   const paddingDays = firstDayOfMonth.getDay(); //
 
   const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate(); // numero de dias del mes
-  const dayNumbers = [...Array(paddingDays + daysInMonth).keys()]; // array de numeros desde el 1 hasta el ultimo dia del mes seleccionado
+  // const dayNumbers = [...Array(paddingDays + daysInMonth).keys()]; // array de numeros desde el 1 hasta el ultimo dia del mes seleccionado
 
   const lastDayOfPrevMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+
+  const dayNumbers = [];
+  for (let i = 0; i <= paddingDays + daysInMonth; i++) {
+    let day = i - paddingDays + 1;
+    if (paddingDays > i) {
+      if (selectedMonth === 0) {
+        dayNumbers.push({
+          year: selectedYear - 1,
+          month: selectedMonth + 11,
+          day: lastDayOfPrevMonth + day,
+          padding: true
+        })
+      } else {
+        dayNumbers.push({
+          year: selectedYear,
+          month: selectedMonth - 1,
+          day: lastDayOfPrevMonth + day,
+          padding: true
+        })
+      }
+    } else {
+      dayNumbers.push({
+        year: selectedYear,
+        month: selectedMonth,
+        day: day,
+        padding: false
+      })
+    }
+  }
 
   const changeMonth = (number) => {
     switch (selectedMonth) {
