@@ -26,23 +26,45 @@
 
 .month-day {
   border: thin solid black;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
   font-size: 20px;
-  text-align: center;
   margin: 5px;
-  padding: 10px;
   background: #a9b8b6;
 }
 
 .month-day:hover {
-  transform: scale(1.25);
   cursor: pointer;
+}
+
+.month-day:hover h1 {
+  animation: x-axis 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes x-axis {
+  100% {
+    transform: translateY(-40px) scale(0.6);
+  }
+}
+
+.month-day:hover .day-list {
+  animation: display 1.1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes display {
+  100% {
+    opacity: 100%;
+  }
 }
 
 .month-days-container {
   margin: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: repeat(auto, 1fr);
+  grid-auto-rows: repeat(auto, 100px);
 }
 
 .padding {
