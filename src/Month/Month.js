@@ -33,7 +33,7 @@ const Month = () => {
       <nav className='month-nav'>
         <h1>HOME</h1>
         <button onClick={() => changeMonth(-1)}>{'<'}</button>
-        <h1>{meses[selectedMonth]}</h1>
+        <h1 className='month-nav-title'>{meses[selectedMonth]}</h1>
         <button onClick={() => changeMonth(1)}>{'>'}</button>
       </nav>
       <main className='month-main'>
