@@ -23,7 +23,7 @@ const Month = () => {
         key={index}
         onClick={() => {setSelectedDate(date.day); setDisplay('dia')}}
         >
-        <Day dayName={date.dayName} day={date.day} miniatura={true} />
+        <Day dayName={date.dayName} day={date.day} tasks={date.tasks} miniatura={true} />
       </div>
     )
   })

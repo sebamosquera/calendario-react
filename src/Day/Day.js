@@ -4,18 +4,17 @@ import { DataContext } from '../Context/DataContext';
 
 const Day = (props) => {
 
-  const { selectedDate, dayNames } = useContext(DataContext)
+  const { selectedDate, dayNames } = useContext(DataContext);
 
   return (
     <div className='day-div'>
       {props.miniatura === true ?
         <div>
           <h1 className='day-number'>{props.day}</h1>
-          <div className='day-agregar-tarea'>Agregar Tarea</div>
+          <div className='day-agregar-tarea'>+</div>
           {
           <ul className='day-list'>
-            <li>Tarea 1</li>
-            <li>Tarea 2</li>
+            {props.tasks}
           </ul>
         }
         </div> :

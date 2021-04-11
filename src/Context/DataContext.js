@@ -1,7 +1,5 @@
 import React, { useState, createContext } from 'react';
 
-// const dayNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-
 const dayNames = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES',
  'VIERNES', 'SABADO']
 
@@ -33,6 +31,34 @@ const DataProvider = ({children}) => {
 
   const lastDayOfPrevMonth = new Date(selectedYear, selectedMonth, 0).getDate();
 
+  const tasks = [
+    {
+      year: 2021,
+      month: 3,
+      day: 1,
+      task: 'me ves?'
+    },
+    {
+      year: 2020,
+      month: 11,
+      day: 26,
+      task: 'Tarea 2'
+    },
+    {
+      year: 2019,
+      month: 3,
+      day: 12,
+      task: 'Tarea 3'
+    }
+  ];
+
+  const findTask = (year, month, day) => {
+    let filteredTasks = tasks
+        .filter(task => task.year === year && task.month === month && task.day === day)
+        .map(filtered => filtered.task)
+    return filteredTasks;
+  }
+
   const dayNumbers = [];
   for (let i = 0, index = 0; i < paddingDays + daysInMonth; i++, index++) {
     let day = i - paddingDays + 1;
@@ -44,7 +70,8 @@ const DataProvider = ({children}) => {
           month: selectedMonth + 11,
           day: lastDayOfPrevMonth + day,
           dayName: dayNames[index],
-          padding: true
+          padding: true,
+          tasks: findTask(year, month, day)
         })
       } else {
         dayNumbers.push({
@@ -52,7 +79,8 @@ const DataProvider = ({children}) => {
           month: selectedMonth - 1,
           day: lastDayOfPrevMonth + day,
           dayName: dayNames[index],
-          padding: true
+          padding: true,
+          tasks: findTask(year, month, day)
         })
       }
     } else {
@@ -61,7 +89,8 @@ const DataProvider = ({children}) => {
         month: selectedMonth,
         day: day,
         dayName: dayNames[index],
-        padding: false
+        padding: false,
+        tasks: findTask(year, month, day)
       })
     }
   }
