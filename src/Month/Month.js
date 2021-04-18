@@ -21,9 +21,9 @@ const Month = () => {
       <div
         className={date.padding? 'month-day padding' : 'month-day'}
         key={index}
-        onClick={() => {setSelectedDate(date.day); setDisplay('dia')}}
+        onClick={() => {setSelectedDate(date.day); /*setDisplay('dia')*/}}
         >
-        <Day dayName={date.dayName} day={date.day} tasks={date.tasks} miniatura={true} />
+        <Day year={date.year} month={date.month} day={date.day} dayName={date.dayName} tasks={date.tasks} miniatura={true} />
       </div>
     )
   })

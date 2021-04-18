@@ -31,26 +31,36 @@ const DataProvider = ({children}) => {
 
   const lastDayOfPrevMonth = new Date(selectedYear, selectedMonth, 0).getDate();
 
-  const tasks = [
-    {
-      year: 2021,
-      month: 3,
-      day: 1,
-      task: 'me ves?'
-    },
+  const [ tasks, setTasks ] = useState([
     {
       year: 2020,
       month: 11,
-      day: 26,
-      task: 'Tarea 2'
+      day: 31,
+      task: 'tarea 1'
     },
     {
-      year: 2019,
+      year: 2021,
+      month: 0,
+      day: 1,
+      task: 'tarea 2'
+    },
+    {
+      year: 2021,
       month: 3,
-      day: 12,
-      task: 'Tarea 3'
+      day: 2,
+      task: 'tarea 3'
     }
-  ];
+  ]);
+
+  console.log(tasks);
+  // const addTask = (task) => {
+  //   tasks.push(task);
+  // }
+  // console.log(tasks);
+  //
+  // const deleteTask = (task) => {
+  //   tasks.find(t => t === task);
+  // }
 
   const findTask = (year, month, day) => {
     let filteredTasks = tasks
@@ -71,7 +81,7 @@ const DataProvider = ({children}) => {
           day: lastDayOfPrevMonth + day,
           dayName: dayNames[index],
           padding: true,
-          tasks: findTask(year, month, day)
+          tasks: findTask(selectedYear - 1, selectedMonth + 11, lastDayOfPrevMonth + day)  // arreglar esta sintaxis
         })
       } else {
         dayNumbers.push({
@@ -80,7 +90,7 @@ const DataProvider = ({children}) => {
           day: lastDayOfPrevMonth + day,
           dayName: dayNames[index],
           padding: true,
-          tasks: findTask(year, month, day)
+          tasks: findTask(selectedYear, selectedMonth - 1, lastDayOfPrevMonth + day)  // arreglar esta sintaxis
         })
       }
     } else {
@@ -90,7 +100,7 @@ const DataProvider = ({children}) => {
         day: day,
         dayName: dayNames[index],
         padding: false,
-        tasks: findTask(year, month, day)
+        tasks: findTask(selectedYear, selectedMonth, day)  // arreglar esta sintaxis
       })
     }
   }
@@ -110,6 +120,7 @@ const DataProvider = ({children}) => {
         break;
     }
     // function that when a next or previous button is clicked it changes the current selectedMonth
+    // falta el cambio de año
   }
 
   return (
@@ -127,7 +138,9 @@ const DataProvider = ({children}) => {
       lastDayOfPrevMonth,
       changeMonth,
       display,
-      setDisplay
+      setDisplay,
+      tasks,
+      setTasks
     }}>
       {children}
     </DataContext.Provider>
